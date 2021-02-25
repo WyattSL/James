@@ -13,7 +13,7 @@ client.commands = []
 client.events = []
 
 async function loadModules() {
-  var modules = await fs.readDir("./modules/", {withFileTypes: true});
+  var modules = await fs.readdir("./modules/", {withFileTypes: true});
   var module;
   for (module of modules) {
     var mod = require("./modules/"+module);
@@ -31,7 +31,6 @@ async function loadModules() {
       }
     }
   }
-}
 
 var i = 0;
 var listeners = [];
@@ -50,6 +49,7 @@ for (i=0;i<client.events.length;i++) {
       });
     `);
   }
+}
 }
 
 client.login(process.env.TOKEN)
