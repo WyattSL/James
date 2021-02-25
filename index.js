@@ -2,7 +2,7 @@ require("dotenv").config({path: "./.env"});
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const embed = Discord.MessageEmbed;
-const fs = require("fs");
+const fs = require("fs/promises");
 
 client.on("ready", () => {
   console.log(`Client logged in as ${client.user.tag}!`);
