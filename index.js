@@ -2,7 +2,8 @@ require("dotenv").config({path: "./.env"});
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const embed = Discord.MessageEmbed;
-const fs = require("fs/promises");
+const fs = require("fs");
+import { readdir } from 'fs/promises';
 
 client.on("ready", () => {
   console.log(`Client logged in as ${client.user.tag}!`);
@@ -13,7 +14,7 @@ client.commands = []
 client.events = []
 
 async function loadModules() {
-  var modules = await fs.readdir("./modules/", {withFileTypes: true});
+  var modules = await readdir("./modules/", {withFileTypes: true});
   var module;
   for (module of modules) {
     var mod = require("./modules/"+module);
